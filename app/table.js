@@ -1,6 +1,8 @@
 const table_head = document.getElementById('table_head');
 const table_body = document.getElementById('table_body');
 const array_tr = document.createElement('tr')
+const form_client = document.getElementById('form-client');
+const search_client = document.getElementById('search_client');
 
 function table_generator(array){
     for (titles of array){
@@ -10,6 +12,9 @@ function table_generator(array){
         table_head.appendChild(elem)
     };
 };
+
+//Formulario
+
 
 
 //Generar encabezados

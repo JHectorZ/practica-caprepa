@@ -1,3 +1,7 @@
+<?php
+include_once './include/conn.php'
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,10 +18,10 @@
     <main>
         <h4>REGISTRO DE PRESTAMOS</h4>
         <menu>
-            <form action="" method="post">
+            <form action="" id="from-client" method="post">
                 <label>Cliente</label><br>
                 <input type="search">
-                <input type="submit" value="Buscar">
+                <input type="button" id="search-client" value="Buscar">
 
                 <input type="submit" value="Agregar Préstamo">
             </form>
@@ -34,5 +38,9 @@
         </menu>
     </main>
     <script src="./app/table.js"></script>
+    <?php
+        $db = new PDOManager();
+        $db->connect();
+    ?>
 </body>
 </html>
