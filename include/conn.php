@@ -1,4 +1,6 @@
 <?php
+
+// Clase PDOManager sera la encargada de manejar la conexion con la base de datos
 class PDOManager {
     private $host;
     private $dbname;
@@ -7,6 +9,7 @@ class PDOManager {
     private $charset;
 
 
+    // Asignacion de valores a los atriburos de la clase, son privados para que solo puedan acceder por dentro
     public function __construct(){
         $this->host = '127.0.0.1';
         $this->dbname = 'proyecto';
@@ -17,6 +20,7 @@ class PDOManager {
     }
 
 
+    // Metodo de conexion hacia la base de datos
     public function connect(){
         try {
             $connection = "mysql:host=" . $this->host . ";dbname=" . $this->dbname;
@@ -27,8 +31,10 @@ class PDOManager {
             ];
 
             $pdo = new PDO($connection, $this->user, $this->password, $options);
+
+            return $pdo;
         } catch (PDOException $e) {
-            print_r("Error connection: " . $e->getMessage());
+            echo("Error connection: " . $e->getMessage());
         }
     }
 

@@ -1,0 +1,27 @@
+<head>
+    <title>Prestamos | sitio web</title>
+    <link rel="stylesheet" href="../static/styles/styles_register.css">
+</head>
+<body>
+    <main>
+        <h4>AGREGAR PRESTAMO</h4>
+        <form name="form_client" method="post">
+            <label for="client">Cliente</label>
+            <select name="client" id="client" required>
+                <option disabled selected>Selecionar Cliente</option>
+            </select>
+            <label for="amount">Monto</label>
+            <select name="amount" id="amount" required>
+                <option  disabled selected>Selecionar Monto</option>
+            </select>
+            <label for="term">Plazo</label>
+            <select name="term" id="term" required>
+                <option  disabled selected>Selecionar Plazo</option>
+            </select>
+            
+            <button type="reset" id="btn_cancel">Cancelar</button>
+            <input type="button" id="btn_append" value="Agregar">
+        </form>
+    </main>
+    <script src="../app/prestamo.js" type="module"></script>
+</body>

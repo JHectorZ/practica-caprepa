@@ -1,0 +1,30 @@
+<head>
+    <title>Tabla amortizacion | sitio web</title>
+    <link rel="stylesheet" href="../static/styles/styles_amortization.css">
+</head>
+<body>
+    <main>
+        <h4>Tabla amortizacion</h4>
+        <section>
+            <p id="client">Cliente: </p>
+            <table>
+                <thead>
+                    <tr class="table_head">
+                        <th>No. Pago</th>
+                        <th>Fecha</th>
+                        <th>Prestamo</th>
+                        <th>Intereses</th>
+                        <th>Plazos</th>
+                        <th>Abono</th>
+                    </tr>
+
+                </thead>
+                <tbody class="table_body" id="table_body">
+                </tbody>
+              </table>
+              <input type="button" id="btn_exit" value="Salir">
+        </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../app/amortization.js" type="module"></script>
+</body>
