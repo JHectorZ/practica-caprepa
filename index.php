@@ -17,7 +17,9 @@ include_once './include/conn.php'
 </head>
 <body>
     <main>
-        <h4>REGISTRO DE PRESTAMOS</h4>
+        <div class="header-wrapper">
+            <h4>REGISTRO DE PRESTAMOS</h4>
+        </div>
         <menu class="menu">
             <section class="menu-index">
                 <div class="container">
@@ -26,7 +28,8 @@ include_once './include/conn.php'
                 </div>
                 <div class="container">
                     <input type="button" id="btn_search" value="Buscar">
-                    <input type="submit" id="btn_append" value="Agregar Préstamo">                    
+                    <input type="submit" id="btn_append_loan" value="Agregar Préstamo">                    
+                    <input type="submit" id="btn_append_client" value="Agregar Cliente">                    
                 </div>
             </section>
             <section class="menu-table">
@@ -37,7 +40,6 @@ include_once './include/conn.php'
                     <tbody class="table_body" id="table_body">
                     </tbody>
                 </table>
-                  
             </section>
         </menu>
     </main>
