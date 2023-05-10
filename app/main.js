@@ -10,7 +10,7 @@ import { getDataAll } from './apps/conn.js'
 
 // Generacion de tabla
 btn_search.addEventListener('click', (()=>{
-    search_client('JUAN CARLOS LOPEZ HERNANDEZ');
+    search_client('JESUS HECTOR ZAVALA INZUNZA');
 }));
 
 

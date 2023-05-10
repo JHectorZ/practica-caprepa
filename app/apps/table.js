@@ -25,8 +25,8 @@ function title_generator(array_titles) {
 
 // Esta funcion sirve para que el json que le mande, me lo regrese con 1 solo objeto y a su vez que me sume los plazos y montos
 function show_client(lista) {
-    const result = lista.reduce((acc, { nombre_cliente, monto }) => {
-        acc[nombre_cliente] = acc[nombre_cliente] || { nombre_cliente, monto_total: 0, plazos: 0 };
+    const result = lista.reduce((acc, { id_cliente, nombre_cliente, monto }) => {
+        acc[nombre_cliente] = acc[nombre_cliente] || { id_cliente, nombre_cliente, monto_total: 0, plazos: 0};
         acc[nombre_cliente].monto_total += monto;
         acc[nombre_cliente].plazos += 1;
         return acc;
@@ -45,7 +45,6 @@ export function show_table(array){
 
     // Mandamos la funcion para que lo la retorne a como la usaremos
     let array_complete = show_client(array)
-    console.log(array_complete);
 
     // Generar cuerpo
     array_complete.forEach(data => {

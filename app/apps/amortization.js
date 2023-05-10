@@ -1,5 +1,5 @@
 //Importamos herramientas necesarias
-import { getPrestamosByIdCliente } from './conn.js';
+import { getDataById } from './conn.js';
 
 //Obtenemos elementos del DOOM
 const table_body = document.querySelector('tbody');
@@ -54,6 +54,7 @@ let id = queryParams.get('id');
 
 
 //Generacion de la tabla
-getPrestamosByIdCliente(id).then((cliente)=>{
+getDataById(id).then((cliente)=>{
+    console.log(cliente);
     show_client(cliente)
 });
