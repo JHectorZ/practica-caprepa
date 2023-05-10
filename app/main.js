@@ -1,19 +1,18 @@
-//Importaciones de modulos que ocuparemos
-import { filter , show_client } from './table.js';
-import { getPrestamos } from './conn.js';
+//Elementos del DOOM
+const btn_search = document.getElementById('btn_search');
+const input_search = document.getElementById('search_client');
 
 
-// Funcionamiento de busqueda de clientes
-btn_search.addEventListener('click', () => {
-    getPrestamos().then((clientes) => {
-      const clienteBuscado = clientes.find(cliente => cliente.nombre_cliente === search_client.value);
-      if (clienteBuscado) {
-        show_client(filter(clientes, search_client.value));
-      } else {
-        console.log('No está en la lista');
-      }
-    });
-  });
+//Importaciones de modulos necesarios
+import { search_client } from './apps/search.js';
+import { getDataAll } from './apps/conn.js'
+
+
+// Generacion de tabla
+btn_search.addEventListener('click', (()=>{
+    search_client('JUAN CARLOS LOPEZ HERNANDEZ');
+}));
+
 
 //Funcionamiento del prestamo
 btn_append.addEventListener('click', (() =>{

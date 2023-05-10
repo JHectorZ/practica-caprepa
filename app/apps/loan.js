@@ -12,7 +12,7 @@ const amount = form.elements.amount;
 const term = form.elements.term;
 
 //Importamos modulos
-import { getTableNames } from './conn.js'
+import { getDataNames } from './conn.js'
 
 
 //Funcion para generar los selectores
@@ -40,12 +40,12 @@ btn_append.addEventListener("click",(()=>{
         var xhr = new XMLHttpRequest();
     
         // Configurar la petición
-        xhr.open('POST', '../include/survey.php?func=guardarPrestamo', true);
+        xhr.open('POST', '../include/survey.php?func=setDataLoan', true);
     
         // Cuando se complete la petición, mostrar la respuesta
         xhr.onload = function() {
             if (xhr.status === 200) {
-                console.log(xhr.responseText);
+                alert(xhr.response)
             } else {
                 console.log('Error: ' + xhr.statusText);
             }
@@ -83,7 +83,7 @@ const array_pla = [
 
 
 //Generacion de clientes en los selectores
-getTableNames().then((clientes) => {
+getDataNames().then((clientes) => {
     select_generator(clientes, option_selector_client)
 }).catch((error) => {
   console.error(error);

@@ -21,7 +21,7 @@ include_once './include/conn.php'
             <section class="menu-index">
                 <div class="container">
                     <label>Cliente</label><br>
-                    <input type="text" id="search_client">
+                    <input type="search" id="search_client">
                 </div>
                 <div class="container">
                     <input type="button" id="btn_search" value="Buscar">
@@ -41,6 +41,5 @@ include_once './include/conn.php'
         </menu>
     </main>
     <script src="./app/main.js" type="module"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 </html>

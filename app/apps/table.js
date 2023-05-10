@@ -1,16 +1,14 @@
 //Obtener elementos del DOOM
 const table_head = document.getElementById('table_head');
+const table = document.querySelector('.menu-table');
 const btn_append = document.getElementById('btn_append');
-const search_client = document.getElementById('search_client');
-const btn_search = document.getElementById('btn_search');
 const table_body = document.querySelector('tbody');
 
-
-//Crear elementos del DOOM
+// Crear elementos del DOOM
 const array_tr = document.createElement('tr')
 
 
-//Funcion de encabezado encabezados
+// Funcion de encabezado encabezados
 function title_generator(array_titles) {
     let table_header = document.querySelector('thead');
     table_header.innerHTML = '';
@@ -25,23 +23,38 @@ function title_generator(array_titles) {
 }    
 
 
+// Esta funcion sirve para que el json que le mande, me lo regrese con 1 solo objeto y a su vez que me sume los plazos y montos
+function show_client(lista) {
+    const result = lista.reduce((acc, { nombre_cliente, monto }) => {
+        acc[nombre_cliente] = acc[nombre_cliente] || { nombre_cliente, monto_total: 0, plazos: 0 };
+        acc[nombre_cliente].monto_total += monto;
+        acc[nombre_cliente].plazos += 1;
+        return acc;
+    }, {});
+    return Object.values(result);
+};
+  
 
-//Genera el cliente en la tabla
-export function show_client(array){
+// Funcion que genera el cliente en la tabla
+export function show_table(array){
     table_body.innerHTML = '';
 
     // Genera el encabezado
-    const array_titles = ['Clientes', 'Montos de préstamos', 'Plazos', 'Acciones'];
+    let array_titles = ['Clientes', 'Montos de préstamos', 'Plazos', 'Acciones'];
     title_generator(array_titles)
 
+    // Mandamos la funcion para que lo la retorne a como la usaremos
+    let array_complete = show_client(array)
+    console.log(array_complete);
+
     // Generar cuerpo
-    array.forEach(data => {
+    array_complete.forEach(data => {
         let array_tr = document.createElement('tr');
         let celdaCliente = document.createElement('td');
         celdaCliente.textContent = data.nombre_cliente;
     
         let celdaPrestamo = document.createElement('td');
-        celdaPrestamo.textContent = data.monto;
+        celdaPrestamo.textContent = data.monto_total;
     
         let celdaPlazos = document.createElement('td');
         celdaPlazos.textContent = data.plazos;
@@ -62,12 +75,13 @@ export function show_client(array){
     });
 }
 
+export function error_404(){
+    let alert = document.createElement('p');
+    alert.id = 'nofound'
+    alert.textContent = 'Cliente no encontrado'
 
-//Filter para la generacion de tabla
-export function filter(data, nombre) {
-    return data.filter(objeto => objeto.nombre_cliente === nombre);
-  }
-  
+    table.appendChild(alert);
+};
 
 
 

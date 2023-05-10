@@ -4,14 +4,11 @@
 include_once './conn.php';
 
 class Surver extends PDOManager {
-    private $query_get_names = "SELECT nombre, id FROM clientes;";
-    private $query_get_all_data = "SELECT c.id AS id_cliente, c.nombre AS nombre_cliente, p.id AS id_prestamo, p.monto, p.interes, p.plazos, p.fecha_inicio FROM clientes c INNER JOIN prestamos p ON c.id = p.id_cliente ORDER BY c.id, p.id;";
-    private $query_get_one_data = "SELECT c.id, c.nombre, p.monto, p.interes, p.plazos, p.fecha_inicio FROM clientes c JOIN prestamos p ON c.id = p.id_cliente WHERE c.id = :idCliente";
 
 
     // Metodo para la obtencion de objetos mediante el "string_query" 
-    public function getDataObjects() {
-        $query = $this->connect()->prepare();
+    public function getDataObjects($query) {
+        $query = $this->connect()->prepare($query);
         $query->execute();
         $tableNames = $query->fetchAll(PDO::FETCH_ASSOC);
         return $tableNames;
@@ -29,40 +26,49 @@ class Surver extends PDOManager {
     }
     
 
-    public function getPrestamosByIdCliente($idCliente) {
-        $query = $this->connect()->prepare();
-        $query->bindParam(':idCliente', $idCliente);
+    // Metodo para obtencion de objetos mediante el "string_query" en base al id
+    public function getDataObjectsById($client_id) {
+        $query = $this->connect()->prepare("SELECT c.id, c.nombre, p.monto, p.interes, p.plazos, p.fecha_inicio FROM clientes c JOIN prestamos p ON c.id = p.id_cliente WHERE c.id = :idCliente");
+        $query->bindParam(':idCliente', $client_id);
         $query->execute();
         $results  = $query->fetchAll(PDO::FETCH_ASSOC);
         return $results;
     }
 }
 
-$tableNames = new TableNames();
 
-// leer el parámetro "func" de la URL
-$func = isset($_GET['func']) ? $_GET['func'] : '';
+//Creamos objeto y recibidor de peticiones
+$survey_connect = new Surver(); 
+$func = isset($_GET['func']) ? $_GET['func'] : ''; 
 
-// llamar a la función correspondiente según el valor de "func"
+
+// Medianteel recibidor del URL 
 switch ($func) {
-    case 'getPrestamos':
-        $response = $tableNames->getPrestamos();
+    case 'getDataNames':
+        $response = $survey_connect->getDataObjects("SELECT nombre, id FROM clientes;");
         break;
-    case 'getTableNames':
-        $response = $tableNames->getTableNames();
+
+    case 'getDataAll':
+        $response = $survey_connect->getDataObjects("SELECT c.id AS id_cliente, c.nombre AS nombre_cliente, p.id AS id_prestamo, p.monto, p.interes, p.plazos, p.fecha_inicio FROM clientes c INNER JOIN prestamos p ON c.id = p.id_cliente ORDER BY c.id, p.id;");
         break;
-    case 'guardarPrestamo':
-        $response = [$_POST['client'], $_POST['amount'], $_POST['term']];
-        $tableNames->guardarPrestamo($_POST['client'], $_POST['amount'], $_POST['term']);
+
+    case 'setDataLoan':
+        // $response = [$_POST['client'], $_POST['amount'], $_POST['term']];
+        $survey_connect->saveLoan($_POST['client'], $_POST['amount'], $_POST['term']);
+        $response = "El prestamo fue ingresado con exito";
         break;
-    case 'getPrestamosByIdCliente':
-        $idCliente = isset($_GET['idCliente']) ? $_GET['idCliente'] : '';
-        $response = $tableNames->getPrestamosByIdCliente($idCliente);
+        
+    case 'getDataById':
+        $client_id = isset($_GET['client_id']) ? $_GET['client_id'] : '';
+        // $response = 'El ID que enviaste es el: ' . $client_id;
+        $response = $survey_connect->getDataObjectsById($client_id);
         break;
+
     default:
-        $response = [];
+        $response = 'Error en la solicitud de metodo, metodo solicitado: ' . $func;
 }
 
+// Se regresa en json
 echo json_encode($response);
 
 ?>
