@@ -46,6 +46,7 @@ export function show_table(array){
     // Mandamos la funcion para que lo la retorne a como la usaremos
     let array_complete = show_client(array)
 
+    console.log(array);
     // Generar cuerpo
     array_complete.forEach(data => {
         let array_tr = document.createElement('tr');
@@ -74,6 +75,8 @@ export function show_table(array){
     });
 }
 
+
+// Funcion que genera un parrafo en caso de no encontrar al cliente
 export function error_404(){
     let alert = document.createElement('p');
     alert.id = 'nofound'

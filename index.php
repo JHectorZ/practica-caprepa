@@ -12,6 +12,7 @@ include_once './include/conn.php'
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/styles/styles.css?v=<?php echo(rand()); ?>" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.min.css"> -->
     <title>Sistema web - Prestamos</title>
 </head>
 <body>
@@ -21,7 +22,7 @@ include_once './include/conn.php'
             <section class="menu-index">
                 <div class="container">
                     <label>Cliente</label><br>
-                    <input type="search" id="search_client">
+                    <input type="search" id="autoComplete">
                 </div>
                 <div class="container">
                     <input type="button" id="btn_search" value="Buscar">
@@ -40,6 +41,7 @@ include_once './include/conn.php'
             </section>
         </menu>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
     <script src="./app/main.js" type="module"></script>
 </body>
 </html>
