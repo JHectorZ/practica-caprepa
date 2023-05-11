@@ -25,6 +25,7 @@ include_once './include/conn.php'
                 <div class="container">
                     <label>Cliente</label><br>
                     <input type="search" id="autoComplete">
+                    <ul id="search-results"></ul>
                 </div>
                 <div class="container">
                     <input type="button" id="btn_search" value="Buscar">

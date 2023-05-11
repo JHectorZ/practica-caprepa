@@ -1,7 +1,6 @@
 //Obtener elementos del DOOM
 const table_head = document.getElementById('table_head');
 const table = document.querySelector('.menu-table');
-const btn_append = document.getElementById('btn_append');
 const table_body = document.querySelector('tbody');
 
 // Crear elementos del DOOM
