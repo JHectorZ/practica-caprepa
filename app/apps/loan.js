@@ -52,7 +52,8 @@ btn_append.addEventListener("click",(()=>{
         };
     
         // Enviar la petición
-        xhr.send(formData)
+        xhr.send(formData);
+        window.location.href = '/';
 }))
 
 

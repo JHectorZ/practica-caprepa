@@ -15,6 +15,17 @@ class Surver extends PDOManager {
     }
     
 
+    // Metodo para enviar datos de clientes a la DB mediante el "query_string"
+    public function saveClient($name, $age, $domicile, $email){
+        $query = $this->connect()->prepare("INSERT INTO clientes (nombre, edad, domicilio, correo) VALUES (:nombre, :edad, :domicilio, :correo)");
+        $query->bindParam(':nombre', $name);
+        $query->bindParam(':edad', $age);
+        $query->bindParam(':domicilio', $domicile);
+        $query->bindParam(':correo', $email);
+        $query->execute();
+    }
+
+
     // Metodo para enviar los datos a la DB mediante el "query_string"
     public function saveLoan($client, $amount, $term) {
         $query = $this->connect()->prepare("INSERT INTO prestamos (id_cliente, monto, interes,plazos, fecha_inicio) VALUES (:cliente, :monto, 0, :plazo, :fecha_inicio)");
@@ -62,6 +73,13 @@ switch ($func) {
         $client_id = isset($_GET['client_id']) ? $_GET['client_id'] : '';
         // $response = 'El ID que enviaste es el: ' . $client_id;
         $response = $survey_connect->getDataObjectsById($client_id);
+        break;
+
+    case 'setDataClient':
+        // $query_string = [$_POST['name'] , $_POST['age'], $_POST['domicile'], $_POST['email']];
+        // $response = 'Los datos que enviaste fueron: ' . $_POST['name'] . $_POST['age'] . $_POST['domicile'] . $_POST['email'];
+        $survey_connect->saveClient($_POST['name'], $_POST['age'], $_POST['domicile'], $_POST['email']);
+        $response = "El cliente fue ingresado con exito";
         break;
 
     default:

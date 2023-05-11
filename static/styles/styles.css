@@ -49,6 +49,12 @@ h4 {
   }
 }
 
+@media (max-width: 840px) {
+  .menu-index{
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
 
 .menu,
 .menu-index,
@@ -70,7 +76,7 @@ h4 {
 
 .container{
   justify-content: center;
-  gap: 2%;
+  gap: 2vw;
   width: 40%;
 }
 
@@ -103,6 +109,10 @@ h4 {
   background-color: #3db33e;
 }
 
+
+.container input:not([type="search"]):hover{
+  background-color: #45a049;
+}
 
 /* Autocomplete */
 .autoComplete_wrapper {
@@ -142,7 +152,7 @@ h4 {
   margin: 0.3rem;
   padding: 0.3rem 0.5rem;
   text-align: left;
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #212121;
   border-radius: 0.35rem;
   background-color: rgba(255, 255, 255, 1);
@@ -196,6 +206,14 @@ h4 {
   border: 0.1rem solid #dddddd;
   text-align: center;
   padding: 1%;
+}
+
+.menu-table button{
+  transform:scale(150%);
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
 }
 
 .menu-table tbody tr:nth-child(even) {

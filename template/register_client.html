@@ -1,0 +1,21 @@
+<head>
+    <title>Prestamos | sitio web</title>
+    <link rel="stylesheet" href="../static/styles/styles_register_client.css">
+</head>
+<body>
+    <main>
+        <div class="header-wrapper">
+            <h4>AGREGAR CLIENTE</h4>
+        </div>
+        <form name="form_client" method="post" class="from_container" >
+            <input name="name" type="text" placeholder="Nombre completo" required>
+            <input name="age" type="number" placeholder="Edad" required>
+            <input name="domicile" type="text" placeholder="Domicilio" required>
+            <input name="email" type="email" placeholder="Correo" required>
+
+            <button type="reset" id="btn_cancel">Cancelar</button>
+            <input type="button" id="btn_append" value="Agregar">
+        </form>
+    </main>
+    <script src="../app/apps/register_client.js" type="module"></script>
+</body>

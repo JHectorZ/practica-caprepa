@@ -20,37 +20,22 @@ export function search_client(frame){
     })
 };
 
+const autoCompleteJS = new autoComplete({
+  placeHolder: "Buscar cliente.",
+  data: {
+    src: async (query) => {
+      try {
+        const array_names = await getDataAll().then((client)=>{
+          return client.map(name => name.nombre_cliente);
+        });
 
-async function createAutoComplete() {
-    const array_names = await getDataAll().then((client)=>{
-        return client.map(name => name.nombre_cliente);
-    });
-    const autoCompleteJS = new autoComplete({
-      placeHolder: "Search for Food...",
-      data: {
-        src: array_names
-      },
-      resultItem: {
-        highlight: true,
+        return array_names;
+      } catch (error) {
+        return error;
       }
-    });
-}
-
-
-createAutoComplete();
-  
-
-
-// const lista = document.getElementById("completeList");
-
-// const show_suggestions = (sugerencias) => {
-//   lista.innerHTML = sugerencias.map(sugerencia => `<li>${sugerencia}</li>`).join("");
-// };
-
-// export function suggestions(valor, sugerencias){
-//     if (valor.length < 3) return;
-//     const sugerenciasCoincidentes = sugerencias.filter(sugerencia => sugerencia.includes(valor));
-//     show_suggestions(sugerenciasCoincidentes);
-// }
-
-
+    },
+},
+  resultItem: {
+      highlight: true,
+  }
+});

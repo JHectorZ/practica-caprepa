@@ -78,3 +78,24 @@ export function setDataLoan(client_id, amount, term) {
     xhttp.send();
   });
 }
+
+
+//Exportacion de la funcion que guarda los clientes en la DB
+export function setDataClient(name, age, domicile, email) {
+  return new Promise((resolve, reject) => {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4) {
+        if (this.status == 200) {
+          const response = JSON.parse(this.responseText);
+          resolve(response);
+        } else {
+          reject(new Error('Error en la solicitud'));
+        }
+      }
+    };
+    query_string = '&name=' + name + '&age=' + age + '&domicile=' + domicile, '&email=' + email;
+    xhttp.open("GET", '../include/survey.php?func=setDataClient' + query_string, true);
+    xhttp.send();
+  });
+}

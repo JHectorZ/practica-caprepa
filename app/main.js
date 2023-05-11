@@ -2,6 +2,7 @@
 const btn_search = document.getElementById('btn_search');
 const input_search = document.getElementById('autoComplete');
 const btn_append_loan = document.getElementById('btn_append_loan');
+const btn_append_client = document.getElementById('btn_append_client');
 const suggestions_selection = document.querySelector("#autoComplete");
 
 
@@ -18,11 +19,18 @@ suggestions_selection.addEventListener("selection", function (event) {
 
 // Generacion de tabla
 btn_search.addEventListener('click', (()=>{
-    search_client(input_search.value);
+    if (input_search.value != ''){
+        search_client(input_search.value);
+    };
 }));
 
 
-//Funcionamiento del prestamo
+// Boton para redirigirse a registro de prestamo
 btn_append_loan.addEventListener('click', (() =>{
-    window.location.href = '../template/register.html'
+    window.location.href = '../template/register_loan.html'
+}));
+
+// Boton para redirigirse a registro de cliente
+btn_append_client.addEventListener('click', (() =>{
+    window.location.href = '../template/register_client.html'
 }));

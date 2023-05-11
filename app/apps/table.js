@@ -45,7 +45,6 @@ export function show_table(array){
     // Mandamos la funcion para que lo la retorne a como la usaremos
     let array_complete = show_client(array)
 
-    console.log(array);
     // Generar cuerpo
     array_complete.forEach(data => {
         let array_tr = document.createElement('tr');
@@ -61,9 +60,11 @@ export function show_table(array){
         const button_img = document.createElement('img');
         button_img.src = '../static/resource/svg/menu.svg'
     
-        let celdaAcciones = document.createElement('button');
-        celdaAcciones.appendChild(button_img)
-        celdaAcciones.value = data.id_cliente
+        let celdaAcciones = document.createElement('td');
+        let btn_action = document.createElement('button');
+        btn_action.appendChild(button_img)
+        btn_action.value = data.id_cliente
+        celdaAcciones.appendChild(btn_action)
 
         celdaAcciones.addEventListener('click', function() {
             window.location.href = '../template/amortization_table.html?id=' + data.id_cliente;

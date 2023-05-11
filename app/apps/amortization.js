@@ -20,7 +20,7 @@ function show_client(array){
     
     // Generar cuerpo
     array.forEach(data => {
-        client_parr.innerText = data.nombre
+        client_parr.innerText = 'Cliente: ' + data.nombre
         let array_tr = document.createElement('tr');
         
         let celdaNPago = document.createElement('td');

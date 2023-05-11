@@ -1,78 +1,105 @@
-main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    font-family: Arial, sans-serif;
-  }
+*{
+  box-sizing: border-box;
+  margin: 0%;
+  padding: 0%;
+}
+
+html{
+  font-size: 62.5%;
+  font-family: 'PT Sans Narrow', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap');
+}
   
-  h4 {
-    margin-bottom: 2rem;
-    font-size: 2rem;
-  }
-  
-  section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  #client {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    margin-bottom: 2rem;
-    border: 1px solid #ccc;
-  }
-  
-  
-  thead tr {
-    background-color: #4CAF50;
-    color: #fff;
-  }
-  
-  th,
-  td {
-    text-align: left;
-    padding: 1rem;
-    border: 1px solid #ccc;
-  }
-  
-  
-  th {
-    font-weight: bold;
-  }
-  
-  td button {
-    padding: 1rem 2rem;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  td button:hover {
-    background-color: #3e8e41;
-  }
-  
-  #btn_exit {
-    padding: 1rem 2rem;
-    background-color: #f44336;
-    color: #fff;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  #btn_exit:hover {
-    background-color: #c62828;
-  }
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 80rem;
+}
+
+
+/* TITULO */
+.header-wrapper {
+  background-color: #F5F5F5;
+  border-radius: 1rem;
+  padding: 2%;
+  box-shadow: 0px 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+}
+
+h4 {
+  font-size: 2.5rem;
+  color: #2e3a4f;
+  letter-spacing: 0.4rem;
+}
+
+.menu-table p{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2e3a4f;
+  letter-spacing: 0.4rem;
+  margin-bottom: 2%;
+}
+
+.menu-table{
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+
+.menu-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.4rem;
+}
+
+.menu-table thead tr {
+  background-color: #3db33e;
+  color: #ffffff;
+}
+
+.menu-table thead, .menu-table tbody {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.menu-table th, .menu-table td {
+  border: 0.1rem solid #dddddd;
+  text-align: center;
+  padding: 1%;
+}
+
+.menu-table button{
+  transform:scale(150%);
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.menu-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#btn_exit {
+  margin-top: 5%;
+  width: 30%;
+  padding: 1rem 2rem;
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#btn_exit:hover {
+  background-color: #c62828;
+}
   
