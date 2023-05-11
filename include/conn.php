@@ -1,43 +1,38 @@
 <?php
 
+
+// Archivo de credenciales
+include_once('./config.php');
+
+
 // Clase PDOManager sera la encargada de manejar la conexion con la base de datos
 class PDOManager {
-    private $host;
-    private $dbname;
-    private $user;
-    private $password;
-    private $charset;
+    protected $host;
+    protected $dbname;
+    protected $user;
+    protected $password;
+    protected $charset;
+    protected $pdo;
 
 
-    // Asignacion de valores a los atriburos de la clase, son privados para que solo puedan acceder por dentro
+    // Credenciales para la conexion con la DB
     public function __construct(){
-        $this->host = '127.0.0.1';
-        $this->dbname = 'proyecto';
-        $this->user = 'dev';
-        $this->password = 'K/yFpTF5!9!L0Gn2';
-        $this->charset = 'utf8mb4';
-
+        $config = include('config.php');
+        $this->host = $config['host'];
+        $this->dbname = $config['dbname'];
+        $this->user = $config['user'];
+        $this->password = $config['password'];
+        $this->charset = $config['charset'];
     }
-
 
     // Metodo de conexion hacia la base de datos
-    public function connect(){
-        try {
-            $connection = "mysql:host=" . $this->host . ";dbname=" . $this->dbname;
-
-            $options = [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_EMULATE_PREPARES => false
-            ];
-
-            $pdo = new PDO($connection, $this->user, $this->password, $options);
-
-            return $pdo;
-        } catch (PDOException $e) {
-            echo("Error connection: " . $e->getMessage());
+    public function connect() {
+        if (!$this->pdo) {
+            $dsn = "mysql:host=$this->host;dbname=$this->dbname;charset=$this->charset";
+            $this->pdo = new PDO($dsn, $this->user, $this->password);
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
+        return $this->pdo;
     }
-
-
 }
 ?>
