@@ -55,7 +55,7 @@ Este proyecto es una página web que funciona como sistema de préstamos. Fue de
 
 Las contribuciones son bienvenidas. Si deseas contribuir, por favor realiza un fork de este repositorio y envía tus cambios mediante un pull request.
 
-## s <a name = "license"></a>
+## Licencias <a name = "license"></a>
 
 Este proyecto está bajo la Licencia [MIT](https://opensource.org/licenses/MIT).
 
